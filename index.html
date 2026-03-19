@@ -1545,15 +1545,26 @@
         let db = null;
         let firebaseEnabled = false;
 
+        console.log('🔍 Checking Firebase configuration...');
+        console.log('API Key present:', firebaseConfig.apiKey !== "YOUR_API_KEY_HERE");
+        console.log('Firebase SDK loaded:', typeof firebase !== 'undefined');
+        
         if (firebaseConfig.apiKey !== "YOUR_API_KEY_HERE") {
             try {
+                console.log('🚀 Initializing Firebase...');
                 firebase.initializeApp(firebaseConfig);
                 auth = firebase.auth();
                 db = firebase.firestore();
                 firebaseEnabled = true;
-                console.log('✓ Firebase initialized - Google Auth & Cloud Storage enabled');
+                console.log('✅ Firebase initialized successfully!');
+                console.log('   - Auth:', auth !== null);
+                console.log('   - Firestore:', db !== null);
+                console.log('   - firebaseEnabled:', firebaseEnabled);
             } catch (error) {
                 console.error('❌ Firebase initialization error:', error);
+                console.error('   Error name:', error.name);
+                console.error('   Error message:', error.message);
+                console.error('   Error stack:', error.stack);
                 console.log('⚠ Falling back to demo mode with localStorage');
             }
         } else {
