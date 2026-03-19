@@ -2732,7 +2732,7 @@
                     portfolio.forEach((item, index) => {
                         const docRef = db.collection('users')
                                         .doc(currentUser.uid)
-                                        .collection('portfolio')
+                                        .collection('portfolios')
                                         .doc(`position_${index}`);
                         batch.set(docRef, {
                             ...item,
