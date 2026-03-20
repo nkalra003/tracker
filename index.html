@@ -2156,6 +2156,7 @@
                         
                         return {
                             price: currentPrice,
+                            previousClose: previousClose,
                             change: change,
                             changePercent: changePercent
                         };
@@ -2193,6 +2194,7 @@
                     
                     return {
                         price: currentPrice,
+                        previousClose: previousClose,
                         change: change,
                         changePercent: changePercent
                     };
@@ -2670,7 +2672,7 @@
                         
                         return {
                             current: priceData.price,
-                            previous: priceData.price - priceData.change
+                            previous: priceData.previousClose || priceData.price
                         };
                     }
                     
