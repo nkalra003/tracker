@@ -2799,7 +2799,8 @@
             }
             
             console.log(`✅ Portfolio refresh complete: ${successCount} updated, ${failCount} failed`);
-            savePortfolio();
+            // NOTE: Don't save to Firestore on auto-refresh - only save on manual add/edit/delete
+            // This prevents overwriting Firestore with stale data if multiple tabs/devices are open
             renderPortfolio();
         }
 
